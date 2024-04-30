@@ -14,11 +14,8 @@ const searchClient = algoliasearch(
 	'2G7B85UVZH',
 	'b9a4732423730854c5c3911d150291a4'
 );
-// const index = searchClient.initIndex('pokemon_data');
 
 const App = () => {
-	// const pokemon = useStore(store, store => store.pokemon);
-
 	const { data, loading, error } = useGetPokemon();
 
 	useEffect(() => {

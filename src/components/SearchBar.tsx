@@ -2,8 +2,9 @@ import { useStore } from '@tanstack/react-store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import { store, updateSearch } from '../store';
+import { store, updateLanguage, updateSearch } from '../store';
 import pokemonLogo from '/pokemon-logo.svg';
+import { LanguageOptions } from '../../types';
 
 export const SearchBar = () => {
 	const searchTerm = useStore(store, store => store.search);
@@ -35,6 +36,18 @@ export const SearchBar = () => {
 						updateSearch(e.target.value);
 					}}></input>
 			</div>
+			<select
+				name='language'
+				id='language'
+				className='w-60 rounded-md p-2 text-slate-900'
+				onChange={e => {
+					updateLanguage(e.target.value as LanguageOptions);
+				}}>
+				<option value='english'>English</option>
+				<option value='french'>French</option>
+				<option value='japanese'>Japanese</option>
+				<option value='chinese'>Chinese</option>
+			</select>
 		</div>
 	);
 };

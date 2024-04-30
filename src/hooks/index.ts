@@ -21,8 +21,7 @@ export const useGetPokemon = () => {
 			await index.browseObjects({
 				query: '',
 				batch: batch => {
-					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-					setData(batch as any);
+					setData(batch as Pokemon[]);
 				},
 			});
 		} catch (err) {

@@ -6,6 +6,7 @@ export const store = new Store<AppState>({
 	pokemon: [],
 	language: LanguageOptions.EN,
 	team: [],
+	search: '',
 });
 
 export const updatePokemon = (pokemon: Pokemon[]) => {

@@ -1,6 +1,8 @@
 export enum LanguageOptions {
-	EN = 'en',
-	FR = 'fr',
+	EN = 'english',
+	FR = 'french',
+	JA = 'japanese',
+	ZH = 'chinese',
 }
 
 export interface Pokemon {

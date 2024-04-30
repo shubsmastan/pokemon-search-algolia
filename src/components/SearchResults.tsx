@@ -2,7 +2,9 @@ import algoliasearch from 'algoliasearch';
 import { useCallback, useEffect } from 'react';
 import { useStore } from '@tanstack/react-store';
 
+import { PokemonCard } from './PokemonCard';
 import { store, updatePokemon } from '../store';
+import { Pokemon } from '../../types';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
@@ -18,8 +20,7 @@ export const SearchResults = () => {
 		await index.browseObjects({
 			query: searchTerm,
 			batch: batch => {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				updatePokemon(batch as any);
+				updatePokemon(batch as Pokemon[]);
 			},
 		});
 	}, [searchTerm]);
@@ -37,9 +38,9 @@ export const SearchResults = () => {
 	}
 
 	return (
-		<div className='bg-slate-300 dark:bg-slate-700 p-5 rounded-xl flex gap-5 h-full w-5/6'>
+		<div className='grid grid-cols-1 gap-10 overflow-y-auto bg-slate-300 dark:bg-slate-700 p-5 rounded-xl h-full w-5/6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
 			{pokemon.map(monster => {
-				return <p>{monster.name.english}</p>;
+				return <PokemonCard monster={monster} key={monster.objectID} />;
 			})}
 		</div>
 	);
