@@ -24,7 +24,7 @@ const App = () => {
 		<InstantSearch searchClient={searchClient} indexName='pokemon_data'>
 			<div className='min-h-screen p-5 bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100'>
 				<SearchBar />
-				<div className='mt-5 flex flex-col gap-5 h-[calc(100vh-13.75rem)] md:h-[calc(100vh-8.75rem)] sm:flex-row'>
+				<div className='mt-5 flex flex-col gap-5 h-[calc(100vh-13.75rem)] sm:h-[calc(100vh-8.75rem)] sm:flex-row'>
 					<FiltersBar />
 					<SearchResults />
 				</div>

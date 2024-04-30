@@ -12,10 +12,10 @@ export const SearchBar = () => {
 	const searchTerm = useStore(store, store => store.search);
 
 	return (
-		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 md:h-20 md:flex-row'>
-			<div className='flex items-center gap-5 w-full md:w-auto'>
+		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 sm:h-20 sm:flex-row'>
+			<div className='flex items-center gap-5 w-full sm:w-auto'>
 				<div className='flex flex-col justify-center w-44'>
-					<img src={pokemonLogo} className='h-10 pb-1 md:h-12' />
+					<img src={pokemonLogo} className='h-10 pb-1 sm:h-12' />
 					<p className='text-xs text-center'>
 						Powered by&nbsp;
 						<a
