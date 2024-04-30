@@ -1,3 +1,8 @@
+export enum LanguageOptions {
+	en = 'en',
+	fr = 'fr',
+}
+
 export interface Pokemon {
 	objectID: string;
 	name: {
@@ -19,4 +24,10 @@ export interface Pokemon {
 	image: string;
 	game_versions?: string[];
 	imageUrl?: string;
+}
+
+export interface AppState {
+	pokemon: Pokemon[];
+	language: LanguageOptions;
+	team: Pokemon[];
 }

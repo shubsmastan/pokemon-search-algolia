@@ -2,6 +2,8 @@
 
 This application allows users to search for Pokémon data using Algolia's search functionality. The frontend was styled with Tailwind CSS and Pokémon data was updated/retrieved using the [PokéAPI](https://pokeapi.co/).
 
+Other dependencies used: Axios to get data from Pokémon API, Font Awesome for the lovely icons, Joi for validation and TanStack Store to manage state.
+
 ## How to set up
 
 -   Clone the repository on the command line with the following command in your chosen folder:

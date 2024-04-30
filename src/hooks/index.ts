@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch';
 import { useState, useEffect, useCallback } from 'react';
 import { Pokemon } from '../../types';
+import axios from 'axios';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
@@ -50,27 +51,33 @@ export const useUpdatePokemon = (pokemon: Pokemon[]) => {
 		}[] = [];
 
 		for (const monster of pokemon) {
-			const response = await fetch(
-				`https://pokeapi.co/api/v2/pokemon/${monster.id}`
-			);
-			const { id, game_indices } = await response.json();
+			try {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				const data: any = await axios.get(
+					`https://pokeapi.co/api/v2/pokemon/${monster.id}`
+				);
+				const { id, game_indices } = data;
 
-			const objectID: string = pokemon.find(
-				mon => mon.id === id
-			)!.objectID;
+				const objectID: string = pokemon.find(
+					mon => mon.id === id
+				)!.objectID;
 
-			const game_versions = game_indices.map(
-				({ version }: { version: { name: string } }) => {
-					const versionName =
-						version.name[0].toUpperCase() + version.name.slice(1);
-					return versionName;
-				}
-			);
+				const game_versions = game_indices.map(
+					({ version }: { version: { name: string } }) => {
+						const versionName =
+							version.name[0].toUpperCase() +
+							version.name.slice(1);
+						return versionName;
+					}
+				);
 
-			pokemonVersionData.push({
-				objectID,
-				game_versions,
-			});
+				pokemonVersionData.push({
+					objectID,
+					game_versions,
+				});
+			} catch (err) {
+				console.log(err);
+			}
 		}
 
 		await index.partialUpdateObjects(pokemonVersionData);

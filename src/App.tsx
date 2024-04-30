@@ -1,8 +1,9 @@
 import algoliasearch from 'algoliasearch';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch';
-import { Pokemon } from '../types';
 import { useGetPokemon } from './hooks';
+import { useStore } from '@tanstack/react-store';
+import { store, updatePokemon } from './store';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
@@ -11,12 +12,12 @@ const searchClient = algoliasearch(
 // const index = searchClient.initIndex('pokemon_data');
 
 const App = () => {
-	const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+	const pokemon = useStore(store, store => store.pokemon);
 
 	const { data, loading, error } = useGetPokemon();
 
 	useEffect(() => {
-		setPokemon(data);
+		updatePokemon(data);
 	}, [data]);
 
 	// Commented this out to avoid too many calls to the API - takes a long time!
