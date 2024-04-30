@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import algoliasearch from 'algoliasearch';
 
-import { Pokemon } from '../../types';
+import { updateLanguage } from '../store';
+import { LanguageOptions, Pokemon } from '../../types';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
@@ -86,4 +87,23 @@ export const useUpdatePokemon = (pokemon: Pokemon[]) => {
 	useEffect(() => {
 		updateData();
 	}, [updateData]);
+};
+
+export const useLanguage = () => {
+	const languagePreference = localStorage.getItem('language') || 'english';
+
+	const languages: string[] = Object.values(LanguageOptions);
+
+	useEffect(() => {
+		if (languages.includes(languagePreference)) {
+			updateLanguage(languagePreference as LanguageOptions);
+		} else {
+			console.log(
+				'No valid language in local storage - resetting to English.'
+			);
+			updateLanguage(LanguageOptions.EN);
+		}
+	}, [languagePreference, languages]);
+
+	return languagePreference;
 };

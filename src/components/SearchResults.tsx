@@ -38,7 +38,7 @@ export const SearchResults = () => {
 	}
 
 	return (
-		<div className='grid grid-cols-1 gap-10 overflow-y-auto bg-slate-300 dark:bg-slate-700 p-5 rounded-xl h-full w-5/6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+		<div className='grid grid-cols-1 gap-x-10 gap-y-5 overflow-y-auto bg-slate-300 dark:bg-slate-700 p-5 rounded-xl h-full w-5/6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
 			{pokemon.map(monster => {
 				return <PokemonCard monster={monster} key={monster.objectID} />;
 			})}
