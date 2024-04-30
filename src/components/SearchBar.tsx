@@ -1,59 +1,52 @@
-import { useStore } from '@tanstack/react-store';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { SearchBox } from 'react-instantsearch';
 
-import { store, updateLanguage, updateSearch } from '../store';
-import pokemonLogo from '/pokemon-logo.svg';
-import { LanguageOptions } from '../../types';
 import { useLanguage } from '../hooks';
+import { updateLanguage } from '../store';
+import { LanguageOptions } from '../../types';
+
+import pokemonLogo from '/pokemon-logo.svg';
+import algoliaLogo from '/algolia-logo.svg';
 
 export const SearchBar = () => {
 	const language = useLanguage();
-	const searchTerm = useStore(store, store => store.search);
+
+	const onLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		updateLanguage(e.target.value as LanguageOptions);
+		localStorage.setItem('language', e.target.value);
+	};
 
 	return (
 		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 sm:h-20 sm:flex-row'>
 			<div className='flex items-center gap-5 w-full sm:w-auto'>
 				<div className='flex flex-col justify-center w-44'>
 					<img src={pokemonLogo} className='h-10 pb-1 sm:h-12' />
-					<p className='text-xs text-center'>
-						Powered by&nbsp;
-						<a
-							href='https://www.algolia.com/'
-							target='_blank'
-							className='text-blue-700 dark:text-blue-300 focus:rounded-sm focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-blue-700 dark:focus:outline-blue-300'>
-							Algolia
-						</a>
-					</p>
 				</div>
 				<select
 					name='language'
 					id='language'
 					defaultValue={language}
-					className='w-60 rounded-md p-2 text-slate-900 focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-blue-700 dark:focus:outline-blue-300'
-					onChange={e => {
-						updateLanguage(e.target.value as LanguageOptions);
-						localStorage.setItem('language', e.target.value);
-					}}>
+					className='w-48 rounded-md p-2 text-slate-900 focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-blue-700 dark:focus:outline-blue-300 sm:w-60'
+					onChange={onLanguageChange}>
 					<option value='english'>English</option>
 					<option value='french'>French</option>
 					<option value='japanese'>Japanese</option>
 					<option value='chinese'>Chinese</option>
 				</select>
 			</div>
-			<div className='flex px-3 py-1 gap-3 items-center bg-white w-full rounded-md focus-within:outline focus-within:outline-offset-4 focus-within:outline-[3px] focus-within:outline-blue-700 dark:focus-within:outline-blue-300'>
-				<FontAwesomeIcon
-					icon={faMagnifyingGlass}
-					style={{ color: '#0f172a' }}
-				/>
-				<input
-					type='text'
+			<div className='flex p-1 rounded-md w-full bg-white'>
+				<SearchBox
 					placeholder='Search'
-					className='w-full focus:outline-none text-slate-900'
-					value={searchTerm}
-					onChange={e => {
-						updateSearch(e.target.value);
-					}}></input>
+					classNames={{
+						root: 'flex-1 relative',
+						input: 'w-[calc(100%-20px)] h-8 pl-10 pr-3 rounded-md text-slate-900 focus:outline-none',
+						submitIcon: 'h-6 w-6 absolute top-1 left-2 bottom-0',
+						resetIcon: 'h-4 w-4 absolute top-2 right-3 bottom-0',
+					}}
+				/>
+				<div className='flex items-center justify-center bg-white p-1 rounded-md'>
+					<p className='text-xs text-slate-900'>Search by&nbsp;</p>
+					<img src={algoliaLogo} className='h-5' />
+				</div>
 			</div>
 		</div>
 	);

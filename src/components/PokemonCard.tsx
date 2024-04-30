@@ -1,18 +1,19 @@
 import { useStore } from '@tanstack/react-store';
 
 import { store } from '../store';
-import { Pokemon } from '../../types';
 
 interface PokemonCardProps {
-	monster: Pokemon;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	hit: any;
 }
 
-export const PokemonCard = ({ monster }: PokemonCardProps) => {
+export const PokemonCard = ({ hit }: PokemonCardProps) => {
 	const language = useStore(store, store => store.language);
 
-	const { name, image, type, base } = monster;
+	const { name, image, type, base } = hit;
 
-	const typeString = type.map((t, i) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const typeString = type.map((t: any, i: number) => {
 		if (i === type.length - 1) {
 			return t;
 		}

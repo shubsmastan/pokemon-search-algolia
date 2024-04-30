@@ -1,3 +1,11 @@
+export interface AppState {
+	pokemon: Pokemon[];
+	language: LanguageOptions;
+	team: Pokemon[];
+	search?: string;
+	typeFilter?: string;
+}
+
 export enum LanguageOptions {
 	EN = 'english',
 	FR = 'french',
@@ -26,11 +34,4 @@ export interface Pokemon {
 	image: string;
 	game_versions?: string[];
 	imageUrl?: string;
-}
-
-export interface AppState {
-	pokemon: Pokemon[];
-	language: LanguageOptions;
-	team: Pokemon[];
-	search?: string;
 }

@@ -9,15 +9,6 @@ export const store = new Store<AppState>({
 	search: '',
 });
 
-export const updatePokemon = (pokemon: Pokemon[]) => {
-	store.setState(state => {
-		return {
-			...state,
-			pokemon,
-		};
-	});
-};
-
 export const updateLanguage = (language: LanguageOptions) => {
 	store.setState(state => {
 		return {
@@ -36,11 +27,11 @@ export const updateTeam = (team: Pokemon[]) => {
 	});
 };
 
-export const updateSearch = (search: string) => {
+export const updateTypeFilter = (typeFilter: string) => {
 	store.setState(state => {
 		return {
 			...state,
-			search,
+			typeFilter,
 		};
 	});
 };
