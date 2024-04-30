@@ -34,3 +34,12 @@ export const updateTeam = (team: Pokemon[]) => {
 		};
 	});
 };
+
+export const updateSearch = (search: string) => {
+	store.setState(state => {
+		return {
+			...state,
+			search,
+		};
+	});
+};

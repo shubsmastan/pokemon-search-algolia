@@ -1,9 +1,13 @@
+import { useStore } from '@tanstack/react-store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+import { store, updateSearch } from '../store';
 import pokemonLogo from '/pokemon-logo.svg';
 
 export const SearchBar = () => {
+	const searchTerm = useStore(store, store => store.search);
+
 	return (
 		<div className='bg-slate-300 dark:bg-slate-700 p-5 rounded-xl flex gap-5 h-20'>
 			<div className='flex flex-col justify-center w-44'>
@@ -25,7 +29,11 @@ export const SearchBar = () => {
 				<input
 					type='text'
 					placeholder='Search'
-					className='w-full focus:outline-none text-slate-900'></input>
+					className='w-full focus:outline-none text-slate-900'
+					value={searchTerm}
+					onChange={e => {
+						updateSearch(e.target.value);
+					}}></input>
 			</div>
 		</div>
 	);

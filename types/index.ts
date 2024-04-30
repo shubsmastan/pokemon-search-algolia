@@ -30,4 +30,5 @@ export interface AppState {
 	pokemon: Pokemon[];
 	language: LanguageOptions;
 	team: Pokemon[];
+	search?: string;
 }
