@@ -1,11 +1,12 @@
 export interface Pokemon {
-	id: number;
+	objectID: string;
 	name: {
 		english: string;
 		japanese: string;
 		chinese: string;
 		french: string;
 	};
+	id: number;
 	type: string[];
 	base: {
 		HP: number;
