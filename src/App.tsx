@@ -1,9 +1,14 @@
-import algoliasearch from 'algoliasearch';
 import { useEffect } from 'react';
+
+import algoliasearch from 'algoliasearch';
 import { InstantSearch } from 'react-instantsearch';
+
 import { useGetPokemon } from './hooks';
-import { useStore } from '@tanstack/react-store';
-import { store, updatePokemon } from './store';
+import { updatePokemon } from './store';
+
+import { SearchBar } from './components/SearchBar';
+import { FiltersBar } from './components/FiltersBar';
+import { SearchResults } from './components/SearchResults';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
@@ -12,7 +17,7 @@ const searchClient = algoliasearch(
 // const index = searchClient.initIndex('pokemon_data');
 
 const App = () => {
-	const pokemon = useStore(store, store => store.pokemon);
+	// const pokemon = useStore(store, store => store.pokemon);
 
 	const { data, loading, error } = useGetPokemon();
 
@@ -40,11 +45,15 @@ const App = () => {
 	}
 
 	return (
-		<>
-			<InstantSearch searchClient={searchClient} indexName='pokemon_data'>
-				<p>{pokemon.length} Pokemon available to search!</p>
-			</InstantSearch>
-		</>
+		<InstantSearch searchClient={searchClient} indexName='pokemon_data'>
+			<div className='p-5'>
+				<SearchBar />
+				<div className='flex gap-5'>
+					<FiltersBar />
+					<SearchResults />
+				</div>
+			</div>
+		</InstantSearch>
 	);
 };
 

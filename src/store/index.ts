@@ -1,13 +1,10 @@
 import { Store } from '@tanstack/store';
-import { Pokemon, LanguageOptions } from '../../types';
 
-export const store = new Store<{
-	pokemon: Pokemon[];
-	language: LanguageOptions;
-	team: Pokemon[];
-}>({
+import { Pokemon, LanguageOptions, AppState } from '../../types';
+
+export const store = new Store<AppState>({
 	pokemon: [],
-	language: LanguageOptions.en,
+	language: LanguageOptions.EN,
 	team: [],
 });
 

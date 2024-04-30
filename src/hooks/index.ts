@@ -1,7 +1,8 @@
-import algoliasearch from 'algoliasearch';
 import { useState, useEffect, useCallback } from 'react';
-import { Pokemon } from '../../types';
 import axios from 'axios';
+import algoliasearch from 'algoliasearch';
+
+import { Pokemon } from '../../types';
 
 const searchClient = algoliasearch(
 	'2G7B85UVZH',
