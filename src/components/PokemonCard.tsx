@@ -10,17 +10,23 @@ interface PokemonCardProps {
 export const PokemonCard = ({ monster }: PokemonCardProps) => {
 	const language = useStore(store, store => store.language);
 
+	const { name, image, type } = monster;
+
+	const typeString = type.map((t, i) => {
+		if (i === type.length - 1) {
+			return t;
+		}
+		return t + ', ';
+	});
+
 	return (
 		<div className='flex flex-col gap-5 items-center justify-evenly p-3 h-80 rounded-md shadow-sm border-[1px] border-slate-500 shadow-slate-500'>
-			<img src={monster.image} style={{ height: 100 }} />
+			<img src={image} style={{ height: 100 }} />
 			<div className='flex flex-col gap-2 w-full items-center'>
-				<h3 className='font-medium'>{monster.name[language]}</h3>
-				<p>
-					Types:
-					{monster.type.map(t => (
-						<p>{t}</p>
-					))}
-				</p>
+				<h3 className='font-medium'>
+					{name[language]}&nbsp;
+					<span className='font-light'>({typeString})</span>
+				</h3>
 			</div>
 		</div>
 	);

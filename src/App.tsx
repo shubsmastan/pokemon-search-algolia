@@ -11,6 +11,15 @@ const searchClient = algoliasearch(
 );
 
 const App = () => {
+	/*
+	This code is commented out as the data update from the Pokemon API takes a while.
+	All the necessary updates were performed once but presumably in a proper app you need to update regularly!
+	
+	const { data = [] } = useGetPokemon();
+
+	useUpdatePokemon(data);
+	*/
+
 	return (
 		<InstantSearch searchClient={searchClient} indexName='pokemon_data'>
 			<div className='min-h-screen p-5 bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100'>

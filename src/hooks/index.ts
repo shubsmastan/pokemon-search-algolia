@@ -51,8 +51,8 @@ export const useUpdatePokemon = (pokemon: Pokemon[]) => {
 			game_versions: string[];
 		}[] = [];
 
-		for (const monster of pokemon) {
-			try {
+		try {
+			for (const monster of pokemon) {
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				const data: any = await axios.get(
 					`https://pokeapi.co/api/v2/pokemon/${monster.id}`
@@ -76,12 +76,11 @@ export const useUpdatePokemon = (pokemon: Pokemon[]) => {
 					objectID,
 					game_versions,
 				});
-			} catch (err) {
-				console.log(err);
 			}
+			await index.partialUpdateObjects(pokemonVersionData);
+		} catch (err) {
+			console.log(err);
 		}
-
-		await index.partialUpdateObjects(pokemonVersionData);
 	}, [pokemon]);
 
 	useEffect(() => {
