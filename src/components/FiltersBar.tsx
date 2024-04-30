@@ -17,8 +17,8 @@ export const FiltersBar = () => {
 				</button>
 				<p className='font-bold'>Toggle Filters</p>
 			</div>
-			<div className={`${!isOpen && 'hidden'}`}>
-				<h4 className='font-bold'>Type</h4>
+			<div className={`${!isOpen && 'hidden'} sm:block`}>
+				<select></select>
 			</div>
 		</div>
 	);
