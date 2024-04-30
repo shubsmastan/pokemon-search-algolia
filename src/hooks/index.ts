@@ -11,16 +11,16 @@ const searchClient = algoliasearch(
 );
 const index = searchClient.initIndex('pokemon_data');
 
-export const useGetPokemon = () => {
-	const [data, setData] = useState<Pokemon[]>([]);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState('');
+export const useGetPokemon = (searchTerm = '') => {
+	const [data, setData] = useState<Pokemon[]>();
+	const [loading, setLoading] = useState<boolean>();
+	const [error, setError] = useState<string>();
 
 	const getData = useCallback(async () => {
 		try {
 			setLoading(true);
 			await index.browseObjects({
-				query: '',
+				query: searchTerm,
 				batch: batch => {
 					setData(batch as Pokemon[]);
 				},
@@ -33,7 +33,7 @@ export const useGetPokemon = () => {
 		} finally {
 			setLoading(false);
 		}
-	}, []);
+	}, [searchTerm]);
 
 	useEffect(() => {
 		getData();
