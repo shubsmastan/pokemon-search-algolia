@@ -16,10 +16,10 @@ export const SearchBar = () => {
 	};
 
 	return (
-		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 sm:h-20 sm:flex-row'>
-			<div className='flex items-center gap-5 w-full sm:w-auto'>
+		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 md:h-20 md:flex-row'>
+			<div className='flex items-center gap-5 w-full md:w-auto'>
 				<div className='flex flex-col justify-center w-44'>
-					<img src={pokemonLogo} className='h-10 pb-1 sm:h-12' />
+					<img src={pokemonLogo} className='pb-1 h-12' />
 				</div>
 				<select
 					name='language'
@@ -28,9 +28,9 @@ export const SearchBar = () => {
 					className='w-48 rounded-md p-2 text-slate-900 focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-blue-700 dark:focus:outline-blue-300 sm:w-60'
 					onChange={onLanguageChange}>
 					<option value='english'>English</option>
-					<option value='french'>French</option>
-					<option value='japanese'>Japanese</option>
-					<option value='chinese'>Chinese</option>
+					<option value='french'>Français</option>
+					<option value='japanese'>日本語</option>
+					<option value='chinese'>中文</option>
 				</select>
 			</div>
 			<div className='flex p-1 rounded-md w-full bg-white'>

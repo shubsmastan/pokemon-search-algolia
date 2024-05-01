@@ -7,17 +7,20 @@ export const SearchResults = () => {
 
 	if (hits.length === 0) {
 		return (
-			<div className='flex flex-col gap-3 overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700 rounded-xl h-full w-full'>
+			<div className='flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700'>
 				<p>🥺 No Pokémon found. Please try another search term.</p>
 			</div>
 		);
 	}
 
 	return (
-		<div className='flex flex-col gap-3 overflow-y-auto p-5 pt-0 bg-slate-300 dark:bg-slate-700 rounded-xl h-full w-full'>
+		<div className='relative flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700'>
+			<h2 className='absolute text-sm top-3 left-5 lg:left-auto lg:right-8'>
+				{hits.length} results
+			</h2>
 			<Pagination
 				classNames={{
-					list: 'flex gap-5 justify-center items-center text-3xl text-blue-700 dark:text-blue-300',
+					list: 'flex gap-3 justify-center items-center text-3xl text-blue-700 dark:text-blue-300 sm:gap-5',
 					pageItem: 'text-lg mt-2',
 					selectedItem: 'text-white',
 					disabledItem: 'text-white',
@@ -26,7 +29,6 @@ export const SearchResults = () => {
 			<Hits
 				hitComponent={PokemonCard}
 				classNames={{
-					root: '',
 					list: 'grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
 				}}
 			/>
