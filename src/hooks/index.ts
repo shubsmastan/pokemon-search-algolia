@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import algoliasearch from 'algoliasearch';
 
-import { updateFavourites, updateLanguage } from '../store';
+import { updateLanguage } from '../store';
 import { LanguageOptions, Pokemon } from '../../types';
 
 const searchClient = algoliasearch(
@@ -105,14 +105,4 @@ export const useLanguage = () => {
 	}, [languagePreference, languages]);
 
 	return languagePreference;
-};
-
-export const useFavourites = () => {
-	useEffect(() => {
-		const localData = localStorage.getItem('favourites');
-		const parsedData = localData ? JSON.parse(localData) : undefined;
-		if (parsedData && Array.isArray(parsedData))
-			updateFavourites(parsedData);
-		else updateFavourites([]);
-	});
 };

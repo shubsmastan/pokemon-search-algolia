@@ -3,8 +3,7 @@ export interface AppState {
 	language: LanguageOptions;
 	team: Pokemon[];
 	search?: string;
-	favourites?: string[];
-	teamFilter?: boolean;
+	typeFilter?: string;
 }
 
 export enum LanguageOptions {

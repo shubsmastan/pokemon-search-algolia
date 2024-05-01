@@ -2,15 +2,10 @@ import { useState } from 'react';
 import { RefinementList, RangeInput } from 'react-instantsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { updateTeamFilter } from '../store';
 
 export const FiltersBar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [sliderValue, setSliderValue] = useState('100');
-
-	const onChangeTeamFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-		updateTeamFilter(e.target.checked);
-	};
 
 	return (
 		<div className='flex flex-col gap-5 p-5 rounded-xl bg-slate-200 dark:bg-slate-700 lg:h-full lg:w-3/12 lg:overflow-y-scroll'>
@@ -23,16 +18,6 @@ export const FiltersBar = () => {
 					<FontAwesomeIcon icon={faChevronDown} />
 				</button>
 				<p className='font-bold'>{isOpen ? 'Hide' : 'Show'} Filters</p>
-			</div>
-			<div className='flex gap-1'>
-				<input
-					type='checkbox'
-					name='teamFilter'
-					id='teamFilter'
-					value='team'
-					onChange={onChangeTeamFilter}
-				/>
-				<label htmlFor='teamFilter'>My Team Only</label>
 			</div>
 			<div className={`${!isOpen && 'hidden'} lg:block`}>
 				<div className='sm:flex gap-20 lg:block'>
