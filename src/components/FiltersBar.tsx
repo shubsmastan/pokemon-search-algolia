@@ -8,7 +8,7 @@ export const FiltersBar = () => {
 	const [sliderValue, setSliderValue] = useState('100');
 
 	return (
-		<div className='flex flex-col gap-5 p-5 rounded-xl bg-slate-200 dark:bg-slate-700 lg:h-full lg:w-1/6'>
+		<div className='flex flex-col gap-5 p-5 rounded-xl bg-slate-200 dark:bg-slate-700 lg:h-full lg:w-3/12 lg:overflow-y-scroll'>
 			<div className='flex items-center gap-2 lg:hidden'>
 				<button
 					className={`${isOpen && 'rotate-180'} rounded-md focus:outline focus:outline-2 focus:outline-blue-700 dark:focus:outline-blue-300 h-6 w-6`}

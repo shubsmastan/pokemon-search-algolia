@@ -29,7 +29,7 @@ export const SearchResults = () => {
 			<Hits
 				hitComponent={PokemonCard}
 				classNames={{
-					list: 'grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
+					list: 'grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
 				}}
 			/>
 		</div>
