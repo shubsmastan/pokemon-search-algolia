@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RefinementList } from 'react-instantsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,9 +18,8 @@ export const FiltersBar = () => {
 				</button>
 				<p className='font-bold'>Toggle Filters</p>
 			</div>
-			<div className={`${!isOpen && 'hidden'} sm:block`}>
-				<select></select>
-			</div>
+			<p>Types</p>
+			<RefinementList attribute='type' />
 		</div>
 	);
 };

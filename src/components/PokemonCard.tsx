@@ -21,8 +21,8 @@ export const PokemonCard = ({ hit }: PokemonCardProps) => {
 	});
 
 	return (
-		<div className='flex flex-col gap-5 items-center justify-evenly p-3 h-80 rounded-md shadow-sm border-[1px] border-slate-500 shadow-slate-500'>
-			<img src={image} style={{ height: 100 }} />
+		<div className='flex flex-col gap-5 items-center justify-evenly p-3 h-full rounded-md shadow-sm border-[1px] border-slate-500 shadow-slate-500'>
+			<img src={image} className='h-24' />
 			<div className='flex flex-col gap-2 w-full items-center text-sm'>
 				<h3 className='font-medium text-lg pb-3'>
 					{name[language]}&nbsp;
