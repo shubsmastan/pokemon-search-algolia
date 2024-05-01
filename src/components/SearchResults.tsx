@@ -14,10 +14,11 @@ export const SearchResults = () => {
 	}
 
 	return (
-		<div className='flex flex-col gap-3 overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700 rounded-xl h-full w-full'>
+		<div className='flex flex-col gap-3 overflow-y-auto p-5 pt-0 bg-slate-300 dark:bg-slate-700 rounded-xl h-full w-full'>
 			<Pagination
 				classNames={{
-					list: 'flex gap-5 justify-center items-center text-2xl text-blue-700 dark:text-blue-300',
+					list: 'flex gap-5 justify-center items-center text-3xl text-blue-700 dark:text-blue-300',
+					pageItem: 'text-lg mt-2',
 					selectedItem: 'text-white',
 					disabledItem: 'text-white',
 				}}
