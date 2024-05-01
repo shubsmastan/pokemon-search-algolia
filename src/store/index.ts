@@ -7,6 +7,7 @@ export const store = new Store<AppState>({
 	language: LanguageOptions.EN,
 	team: [],
 	search: '',
+	favourites: [],
 });
 
 export const updateLanguage = (language: LanguageOptions) => {
@@ -27,11 +28,21 @@ export const updateTeam = (team: Pokemon[]) => {
 	});
 };
 
-export const updateTypeFilter = (typeFilter: string) => {
+export const updateFavourites = (favourites: string[]) => {
+	localStorage.setItem('favourites', JSON.stringify(favourites));
 	store.setState(state => {
 		return {
 			...state,
-			typeFilter,
+			favourites,
+		};
+	});
+};
+
+export const updateTeamFilter = (teamFilter: boolean) => {
+	store.setState(state => {
+		return {
+			...state,
+			teamFilter,
 		};
 	});
 };

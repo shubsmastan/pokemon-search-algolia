@@ -21,7 +21,10 @@ export const App = () => {
 	*/
 
 	return (
-		<InstantSearch searchClient={searchClient} indexName='pokemon_data'>
+		<InstantSearch
+			searchClient={searchClient}
+			indexName='pokemon_data'
+			insights={true}>
 			<div className='min-h-screen p-5 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100'>
 				<SearchBar />
 				<div className='mt-5 flex flex-col gap-5 lg:h-[calc(100vh-8.75rem)] lg:flex-row'>
