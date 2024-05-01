@@ -32,9 +32,9 @@ export const PokemonCard = ({ hit }: PokemonCardProps) => {
 					<p>HP: {base.HP}</p>
 					<p>Speed: {base.Speed}</p>
 					<p>Attack: {base.Attack}</p>
-					<p>Special: {base['Sp. Attack']}</p>
+					<p>Sp. Attack: {base['Sp. Attack']}</p>
 					<p>Defense: {base.Defense}</p>
-					<p>Special: {base['Sp. Defense']}</p>
+					<p>Sp. Defense: {base['Sp. Defense']}</p>
 				</div>
 			</div>
 		</div>
