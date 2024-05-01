@@ -7,23 +7,23 @@ export const SearchResults = () => {
 
 	if (hits.length === 0) {
 		return (
-			<div className='flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700'>
+			<div className='flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-200 dark:bg-slate-700'>
 				<p>🥺 No Pokémon found. Please try another search term.</p>
 			</div>
 		);
 	}
 
 	return (
-		<div className='relative flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-300 dark:bg-slate-700'>
+		<div className='relative flex flex-col gap-3 lg:h-full w-full rounded-xl lg:overflow-y-auto p-5 bg-slate-200 dark:bg-slate-700'>
 			<h2 className='absolute text-sm top-3 left-5 lg:left-auto lg:right-8'>
 				{hits.length} results
 			</h2>
 			<Pagination
 				classNames={{
-					list: 'flex gap-3 justify-center items-center text-3xl text-blue-700 dark:text-blue-300 sm:gap-5',
+					list: 'flex gap-3 justify-center items-center text-3xl text-blue-600 dark:text-blue-400 sm:gap-5',
 					pageItem: 'text-lg mt-2',
-					selectedItem: 'text-white',
-					disabledItem: 'text-white',
+					selectedItem: 'text-black dark:text-white',
+					disabledItem: 'text-black dark:text-white',
 				}}
 			/>
 			<Hits

@@ -16,7 +16,7 @@ export const SearchBar = () => {
 	};
 
 	return (
-		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-300 dark:bg-slate-700 md:h-20 md:flex-row'>
+		<div className='flex flex-col items-center gap-5 p-5 rounded-xl h-40 bg-slate-200 dark:bg-slate-700 md:h-20 md:flex-row'>
 			<div className='flex items-center gap-5 w-full md:w-auto'>
 				<div className='flex flex-col justify-center w-44'>
 					<img src={pokemonLogo} className='pb-1 h-12' />
