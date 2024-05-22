@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefinementList, RangeInput } from 'react-instantsearch';
+import { RefinementList, RangeInput, usePagination } from 'react-instantsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useStore } from '@tanstack/react-store';
@@ -11,6 +11,8 @@ export const FiltersBar = () => {
 	const [sliderValue, setSliderValue] = useState('100');
 
 	const showOnlyTeam = useStore(store, store => store.showOnlyTeam);
+
+	const { refine } = usePagination();
 
 	return (
 		<div className='flex flex-col gap-5 p-5 rounded-xl bg-slate-200 dark:bg-slate-700 lg:h-full lg:w-3/12 lg:overflow-y-scroll'>
@@ -33,6 +35,7 @@ export const FiltersBar = () => {
 						value='Team'
 						onChange={e => {
 							updateShowOnlyTeam(e.target.checked);
+							refine(0);
 						}}
 						defaultChecked={showOnlyTeam}
 					/>
