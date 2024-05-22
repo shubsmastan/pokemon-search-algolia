@@ -43,9 +43,11 @@ export const SearchBar = () => {
 						resetIcon: 'h-4 w-4 absolute top-2 right-3 bottom-0',
 					}}
 				/>
-				<div className='flex items-center justify-center bg-white p-1 rounded-md'>
-					<p className='text-xs text-slate-900'>Search by&nbsp;</p>
-					<img src={algoliaLogo} className='h-5' />
+				<div className='flex flex-col items-center justify-center bg-white rounded-md'>
+					<p className='text-xs pb-1 text-slate-900'>
+						Search by&nbsp;
+					</p>
+					<img src={algoliaLogo} className='h-3' />
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import algoliasearch from 'algoliasearch';
 
-import { updateLanguage } from '../store';
+import { updateLanguage, updateTeam } from '../store';
 import { LanguageOptions, Pokemon } from '../../types';
 
 const searchClient = algoliasearch(
@@ -105,4 +105,20 @@ export const useLanguage = () => {
 	}, [languagePreference, languages]);
 
 	return languagePreference;
+};
+
+export const useTeam = () => {
+	const localTeam = localStorage.getItem('team');
+
+	const team = localTeam ? JSON.parse(localTeam) : [];
+
+	useEffect(() => {
+		if (team.length && team.legnth > 0) {
+			updateTeam(team);
+		} else {
+			updateTeam([]);
+		}
+	}, [team]);
+
+	return team;
 };

@@ -15,4 +15,4 @@ Other dependencies used: [Axios](https://axios-http.com/docs/intro) to fetch dat
 -   Open a terminal in VS Code, ensuring that the you are in the folder of the repository, then run `npm install`
 -   Once the necessarry files are installed, run `npm run dev`
 -   If the page doesn't open automatically, open a browser window and navigate to the URL `localhost:5173`
--   Enjoy searching for your favourite Pokémon!
+-   Enjoy searching for your favourite Pokémon. You can even add certain Pokémon to your team and the app will remember them using the local storage API!

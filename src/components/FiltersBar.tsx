@@ -2,10 +2,15 @@ import { useState } from 'react';
 import { RefinementList, RangeInput } from 'react-instantsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { useStore } from '@tanstack/react-store';
+
+import { store, updateShowOnlyTeam } from '../store';
 
 export const FiltersBar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [sliderValue, setSliderValue] = useState('100');
+
+	const showOnlyTeam = useStore(store, store => store.showOnlyTeam);
 
 	return (
 		<div className='flex flex-col gap-5 p-5 rounded-xl bg-slate-200 dark:bg-slate-700 lg:h-full lg:w-3/12 lg:overflow-y-scroll'>
@@ -20,6 +25,19 @@ export const FiltersBar = () => {
 				<p className='font-bold'>{isOpen ? 'Hide' : 'Show'} Filters</p>
 			</div>
 			<div className={`${!isOpen && 'hidden'} lg:block`}>
+				<div className='mb-5 font-bold'>
+					<input
+						type='checkbox'
+						id='team'
+						name='team'
+						value='Team'
+						onChange={e => {
+							updateShowOnlyTeam(e.target.checked);
+						}}
+						defaultChecked={showOnlyTeam}
+					/>
+					<label htmlFor='team'>My team only</label>
+				</div>
 				<div className='sm:flex gap-20 lg:block'>
 					<div>
 						<h4 className='font-bold'>Filter by Type</h4>

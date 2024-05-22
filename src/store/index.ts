@@ -1,12 +1,12 @@
 import { Store } from '@tanstack/store';
 
-import { Pokemon, LanguageOptions, AppState } from '../../types';
+import { LanguageOptions, AppState } from '../../types';
 
 export const store = new Store<AppState>({
 	pokemon: [],
 	language: LanguageOptions.EN,
 	team: [],
-	search: '',
+	showOnlyTeam: false,
 });
 
 export const updateLanguage = (language: LanguageOptions) => {
@@ -18,7 +18,7 @@ export const updateLanguage = (language: LanguageOptions) => {
 	});
 };
 
-export const updateTeam = (team: Pokemon[]) => {
+export const updateTeam = (team: string[]) => {
 	store.setState(state => {
 		return {
 			...state,
@@ -27,11 +27,11 @@ export const updateTeam = (team: Pokemon[]) => {
 	});
 };
 
-export const updateTypeFilter = (typeFilter: string) => {
+export const updateShowOnlyTeam = (showOnlyTeam: boolean) => {
 	store.setState(state => {
 		return {
 			...state,
-			typeFilter,
+			showOnlyTeam,
 		};
 	});
 };
